@@ -10,7 +10,7 @@ def index(request):
 
     if request.user.is_anonymous:
         context = {"message": "You are not logged in"}
-        context = {"entry": ""}
+        context["entry"] = ""
         context["nav1"] = "Student Login"
         context["link1"] = "login"
         context["nav2"] = "Sign Up"
@@ -19,7 +19,7 @@ def index(request):
 
     else:
         context = {"message": f"You are logged in as {request.user.username}"}
-        context = {"entry": request.user.username}
+        context["entry"] = request.user.username
         context["nav1"] = "Pay Fees"
         context["link1"] = "payfees"
         context["nav2"] = f"Logout ({request.user.username})"
