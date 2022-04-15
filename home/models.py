@@ -1,6 +1,7 @@
 from django.db import models
 
 class FeesPayments(models.Model):
+    id = models.BigIntegerField(primary_key = True)
     name = models.CharField(max_length=100)
     entry = models.CharField(max_length=12)
     semester = models.IntegerField()
