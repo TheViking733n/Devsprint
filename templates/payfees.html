@@ -164,12 +164,13 @@ p h2{
     <nav class="nav">
        <div font-size="120px" class="logo">  </i><i class="fa-solid fa-book-open-reader" style="font-size:48px; color:white;"></i></div>
        <ul class=" nav-list">
-           <li><a href="/">Home</a></li>           
-           <li><a href="#">Services</a></li>
-           <li><a href="#">Contact us</a></li>
-           <li><a href="/admin/">Admin Login</a></li>
-           <li><a href="/payfees/">Student Login</a></li>
-       </ul>
+        <ul class=" nav-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/admin/">Admin Panel</a></li>
+            {% if entry %}<li><a href="/dashboard/">Student Panel</a></li>{% endif %}
+            <li><a href="/{{link1}}/">{{nav1}}</a></li>
+            <li><a href="/{{link2}}/">{{nav2}}</a></li>
+        </ul>
     </nav>
 
     <div class="welcome" style="font-size:47px; text-align:center"> <span>WEL</span>come to</div>
@@ -189,15 +190,14 @@ p h2{
 
             <select style="color:aliceblue " name="semester" id="semester" onclick="myfunc()">
                 <option style="color:aliceblue"  value="">Choose your SEMESTER</option>
-              <option style="color:aliceblue" value="1">1st SEMESTER</option>
-              <option style="color:aliceblue"value="2">2nd SEMESTER</option>
-              <option style="color:aliceblue"value="3">3rd SEMESTER</option>
-              <option style="color:aliceblue"value="4">4th SEMESTER</option>
-              
-              <option style="color:aliceblue"value="5">5th SEMESTER</option>
-              <option style="color:aliceblue"value="6">6th SEMESTER</option>
-              <option style="color:aliceblue"value="7">7th SEMESTER</option>
-              <option style="color:aliceblue"value="8">8th SEMESTER</option>
+              {% if not sem1 %}<option style="color:aliceblue"value="1">1st SEMESTER</option>{% endif %}
+              {% if not sem2 %}<option style="color:aliceblue"value="2">2nd SEMESTER</option>{% endif %}
+              {% if not sem3 %}<option style="color:aliceblue"value="3">3rd SEMESTER</option>{% endif %}
+              {% if not sem4 %}<option style="color:aliceblue"value="4">4th SEMESTER</option>{% endif %}
+              {% if not sem5 %}<option style="color:aliceblue"value="5">5th SEMESTER</option>{% endif %}
+              {% if not sem6 %}<option style="color:aliceblue"value="6">6th SEMESTER</option>{% endif %}
+              {% if not sem7 %}<option style="color:aliceblue"value="7">7th SEMESTER</option>{% endif %}
+              {% if not sem8 %}<option style="color:aliceblue"value="8">8th SEMESTER</option>{% endif %}
            
             </select>
            

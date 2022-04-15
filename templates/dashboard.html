@@ -1,14 +1,29 @@
 <html>
 <head>
 <title>
-    hello world
+    Dashboard
 </title>
 </head>
 <body>
-    <h1>hello</h1>
+    <nav class="nav">
+        <div font-size="120px" class="logo">  </i><i class="fa-solid fa-book-open-reader" style="font-size:48px; color:white;"></i></div>
+        <ul class=" nav-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/admin/">Admin Panel</a></li>
+            {% if entry %}<li><a href="/dashboard/">Student Panel</a></li>{% endif %}
+            <li><a href="/{{link1}}/">{{nav1}}</a></li>
+            <li><a href="/{{link2}}/">{{nav2}}</a></li>
+        </ul>
+    </nav>
     <p>
-        
-        This is a sample content 
+        <p>{% if sem1 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 1</p>
+        <p>{% if sem2 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 2</p>
+        <p>{% if sem3 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 3</p>
+        <p>{% if sem4 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 4</p>
+        <p>{% if sem5 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 5</p>
+        <p>{% if sem6 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 6</p>
+        <p>{% if sem7 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 7</p>
+        <p>{% if sem8 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 8</p>
         
     </p>
 </body>

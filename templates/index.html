@@ -203,11 +203,13 @@
         </a>
         <div class="navbar-links">
           <ul>
+        <ul class=" nav-list">
             <li><a href="/">Home</a></li>
-            <li><a href="admin/">Admin Panel</a></li>
-            <li><a href="{{link1}}/">{{nav1}}</a></li>
-            <li><a href="{{link2}}/">{{nav2}}</a></li>
-          </ul>
+            <li><a href="/admin/">Admin Panel</a></li>
+            {% if entry %}<li><a href="/dashboard/">Student Panel</a></li>{% endif %}
+            <li><a href="/{{link1}}/">{{nav1}}</a></li>
+            <li><a href="/{{link2}}/">{{nav2}}</a></li>
+        </ul>
         </div>
       </nav>
       

@@ -10,6 +10,7 @@ def index(request):
 
     if request.user.is_anonymous:
         context = {"message": "You are not logged in"}
+        context = {"entry": ""}
         context["nav1"] = "Student Login"
         context["link1"] = "login"
         context["nav2"] = "Sign Up"
@@ -18,6 +19,7 @@ def index(request):
 
     else:
         context = {"message": f"You are logged in as {request.user.username}"}
+        context = {"entry": request.user.username}
         context["nav1"] = "Pay Fees"
         context["link1"] = "payfees"
         context["nav2"] = f"Logout ({request.user.username})"
@@ -28,8 +30,27 @@ def auth(request):
     return HttpResponse("You're at the home auth.")
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
-    # return HttpResponse("You're at the home dashboard.")
+    if request.user.is_anonymous:
+        context = {"entry": ""}
+        context["nav1"] = "Student Login"
+        context["link1"] = "login"
+        context["nav2"] = "Sign Up"
+        context["link2"] = "signup"
+
+    else:
+        context = {"entry": request.user.username}
+        context["nav1"] = "Pay Fees"
+        context["link1"] = "payfees"
+        context["nav2"] = f"Logout ({request.user.username})"
+        context["link2"] = "logout"
+        for sem in range(1, 9):
+            obj = FeesPayments.objects.filter(entry=request.user.username ,semester=sem)
+            if obj:
+                context[f"sem{sem}"] = "Paid"
+            else:
+                context[sem] = ""
+
+    return render(request, 'dashboard.html', context)
 
 def payfees(request):
     if request.method == 'POST':
@@ -43,12 +64,29 @@ def payfees(request):
         time = datetime.now().time()
         feespayments = FeesPayments(name=name, entry=entry, semester=semester, amount=amount, date=date, time=time)
         feespayments.save()
+        return redirect('/dashboard')
 
 
     if request.user.is_anonymous:
         context = {"entry": ""}
+        context["nav1"] = "Student Login"
+        context["link1"] = "login"
+        context["nav2"] = "Sign Up"
+        context["link2"] = "signup"
+
     else:
         context = {"entry": request.user.username}
+        context["nav1"] = "Pay Fees"
+        context["link1"] = "payfees"
+        context["nav2"] = f"Logout ({request.user.username})"
+        context["link2"] = "logout"
+        for sem in range(1, 9):
+            obj = FeesPayments.objects.filter(entry=request.user.username ,semester=sem)
+            if obj:
+                context[f"sem{sem}"] = "Paid"
+            else:
+                context[sem] = ""
+
     return render(request, 'payfees.html', context)
 
 def status(request):
@@ -58,21 +96,23 @@ def loginuser(request):
     if request.method == 'POST':
         username = request.POST.get('uname')
         password = request.POST.get('psw')
-        user = User.objects.filter(username=username, password=password)
         print(username, password)
         try:
             user = User.objects.get(username=username)
         except:
             return HttpResponse("This entry no. doesn't exists")
-        if user is not None:
+
+        user = User.objects.filter(username=username, password=password)
+        user = authenticate(username=username, password=password)
+        if user:
             print("user is logged in")
-            user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/payfees')
+            return redirect('/dashboard')
+        
         else:
             print("user is not logged in")
+            return HttpResponse("Invalid login details supplied.")
             login(request, user)
-            return render(request, 'login.html')
         
 
     return render(request, 'login.html')
@@ -100,10 +140,11 @@ def signup(request):
             user = User.objects.create_user(username=username, password=raw_password)
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('/payfees')
+            return redirect('/dashboard')
         
-        print("this entry no. already taken")
-        return HttpResponse("This entry no. already taken")
+        print("this entry no. is already taken")
+        context = {"error": "You have already created an account. Please try logging in again or contact the administrator."}
+        return render(request, 'signup.html', context)
 
 
     return render(request, 'signup.html')
