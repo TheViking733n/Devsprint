@@ -90,6 +90,7 @@ DATABASES = {
         'PASSWORD': '5a9f5f3517c538ef61aef9b23f4c65fa18a22a11f016b73cb111d4e560a533f9',
         'HOST': 'ec2-18-214-134-226.compute-1.amazonaws.com',
         'PORT':  5432
+        
     }
 }
 import dj_database_url
