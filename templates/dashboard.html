@@ -3,10 +3,315 @@
 <title>
     Dashboard
 </title>
+<style>
+
+    * {
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+       margin:0;
+       padding:0;
+    }
+    
+    .first-screen{
+        margin: 0;
+        padding: 0;
+        min-height:100vh;
+        width:100%;
+        background-image:linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('https://estudentbook.com/admin/images/times_images/1622714728-AmbiTAG%20First%20Ever%20Temperature%20Data%20Logger%20Developed%20By%20IIT%20Ropar.png');
+        background-position:center;
+        background-size: cover;
+       
+        position :relative;
+    }
+    .navbar {
+
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        
+        color: rgba(169, 155, 155, 0.859);
+    }
+    
+    .brand-title {
+      
+        margin: 0;
+    }
+    
+    .navbar-links {
+        height: 100%;
+    }
+    
+    .navbar-links ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .navbar-links li {
+        list-style: none;
+    }
+    
+    .navbar-links li a {
+        display: inline-block;
+        margin:.8rem;
+        text-decoration: none;
+        color: white;
+        padding: .2rem 0;
+    }
+    
+    .navbar ul li::after{
+        content:"";
+        width:0%;
+        height:2px;
+        display:block;
+        background:#f44336;
+        margin:auto;
+        transition:.5s;
+    }
+
+    .navbar ul li:hover::after{
+        width:100%;
+        font-size:larger;
+
+    }
+    .navbar-links li:hover {
+        background-color: #555;
+    }
+    
+    .text-box{
+        width:90%;
+        color:#fff;
+        position:absolute;
+        top:50%;
+        left:50%;
+        text-align:center;
+        transform:translate(-50%,-50%);
+    }
+
+    .text-box h1 {
+        font-size:62px;
+        font-family: 'Source Sans Pro', sans-serif;
+
+    }
+    
+    .text-box p {
+        font-size:24px;
+        margin:23px;
+    }
+    .text-box p  a {
+       text-decoration: none;
+       display:inline-block;
+       color:#fff;
+       border:2px solid white;
+       padding:2px 24px;
+       background:transparent;
+       position:relative;
+        outline:4px solid white;
+
+    }
+
+    .text-box p  a:hover{
+       outline-offset: 3px solid white;
+        padding:2px 24px;
+        border:1px solid #f44336;
+        background:#f44336;
+        transition:.4s ease-in;
+    }
+
+    
+   
+    .toggle-button {
+        position: absolute;
+        top: .75rem;
+        right: 1rem;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+    }
+    
+    .toggle-button .bar {
+        height: 3px;
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+    }
+    
+
+    .course{
+        width: 80%;
+        margin:auto;
+        text-align: center;
+        padding-top:80px;
+    }
+    .course h1{
+        font-size: 36px;
+        font-weight: 600;
+
+    }
+    .course p{
+        font-size:18px;
+        color:#777;
+        font-weight: 300;
+        line-height: 22px;
+        padding:18px;
+    }
+    
+
+    .rows{
+        margin-top: 5%;
+        display: flex;
+        justify-content: space-between;
+        
+    }
+    .course-col{
+
+        flex-basis:31%;
+        background-color: #fff3f3;
+        border-radius: 10px;
+        margin-bottom:5%;
+        padding:20px 12px;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+    .course-col:hover{
+        box-shadow: 0 0 20px 0px;
+
+
+    }
+
+    @media(max-width:800px){
+        .rows{
+            flex-direction: column;
+        }
+    }
+
+
+
+    .footer{
+        width:100%;
+        text-align: center;
+        padding:30px 0;
+
+    }
+
+    .footer h4{
+        margin-bottom:25px;
+        margin-top:20px;
+        font-weight:400;
+    
+    
+    }
+
+    .icons{
+        margin-left:45%;
+    }
+
+
+    @media (max-width: 800px) {
+        .navbar {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    
+        .toggle-button {
+            display: flex;
+        }
+    
+        .navbar-links {
+            display: none;
+            width: 100%;
+        }
+    
+        .navbar-links ul {
+            width: 100%;
+            flex-direction: column;
+        }
+    
+        .navbar-links ul li {
+            text-align: center;
+        }
+    
+        .navbar-links ul li a {
+            padding: .5rem 1rem;
+        }
+    
+        .navbar-links.active {
+            display: flex;
+        }
+    }
+    
+    
+    
+    .status {
+        font-size: 25px;
+        font-weight: bold;
+        color: black;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+    .greentick {
+        color: green;
+    }
+    
+    .redtick {
+        color: red;
+    }
+    
+    
+    .status p{
+        font-family: 'Roboto', sans-serif;
+        background-color: #f4f4f4;
+        display: block;
+        padding-left: 20rem;
+        letter-spacing: 1px;
+        margin-bottom:12px;
+    }
+    
+    
+    
+    
+    /* Background Styles Only */
+    
+    @import url('https://fonts.googleapis.com/css?family=Raleway');
+    
+    * {
+        font-family: Raleway;
+    }
+    
+    html {
+        background-color: #DFDFDF;
+    }
+    
+    
+    
+</style>
+
+<script src="https://kit.fontawesome.com/783752fd1c.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/254c15941e.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="nav">
-        <div font-size="120px" class="logo">  </i><i class="fa-solid fa-book-open-reader" style="font-size:48px; color:white;"></i></div>
+    <nav class="navbar">
+        <div class="brand-title"><a href="https://www.iitrpr.ac.in/"> <img width ="15%" src="https://timesofindia.indiatimes.com/thumb/msid-71721983,imgsize-362900,width-400,resizemode-4/71721983.jpg" /></a> </div>
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          <ul>
         <ul class=" nav-list">
             <li><a href="/">Home</a></li>
             <li><a href="/admin/">Admin Panel</a></li>
@@ -14,17 +319,20 @@
             <li><a href="/{{link1}}/">{{nav1}}</a></li>
             <li><a href="/{{link2}}/">{{nav2}}</a></li>
         </ul>
-    </nav>
-    <p>
-        <p>{% if sem1 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 1</p>
-        <p>{% if sem2 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 2</p>
-        <p>{% if sem3 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 3</p>
-        <p>{% if sem4 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 4</p>
-        <p>{% if sem5 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 5</p>
-        <p>{% if sem6 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 6</p>
-        <p>{% if sem7 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 7</p>
-        <p>{% if sem8 %}Fees Paid{% else %}Fees not Paid{% endif %} for semester 8</p>
+        </div>
+      </nav>
+    <h1 style="font-size:42px; text-align:center; font-family: 'Roboto-mono', sans-serif;">Dashboard - Student Fees Payment Record</h1>
+    <h2 style="font-size:24px; text-align:center; font-family: 'Roboto-mono', sans-serif;">Welcome {{entry}}</h1>
+    <div class="status">
+        <p>{% if sem1 %}<i class="fa-solid fa-circle-check greentick"></i> Fees Paid{% else %}<i class="fa-solid fa-circle-check redtick"></i> Fees not Paid{% endif %} for semester 1</p>
+        <p>{% if sem2 %}<i class="fa-solid fa-circle-check greentick"></i> Fees Paid{% else %}<i class="fa-solid fa-circle-check redtick"></i> Fees not Paid{% endif %} for semester 2</p>
+        <p>{% if sem3 %}<i class="fa-solid fa-circle-check greentick"></i> Fees Paid{% else %}<i class="fa-solid fa-circle-check redtick"></i> Fees not Paid{% endif %} for semester 3</p>
+        <p>{% if sem4 %}<i class="fa-solid fa-circle-check greentick"></i> Fees Paid{% else %}<i class="fa-solid fa-circle-check redtick"></i> Fees not Paid{% endif %} for semester 4</p>
+        <p>{% if sem5 %}<i class="fa-solid fa-circle-check greentick"></i> Fees Paid{% else %}<i class="fa-solid fa-circle-check redtick"></i> Fees not Paid{% endif %} for semester 5</p>
+        <p>{% if sem6 %}<i class="fa-solid fa-circle-check greentick"></i> Fees Paid{% else %}<i class="fa-solid fa-circle-check redtick"></i> Fees not Paid{% endif %} for semester 6</p>
+        <p>{% if sem7 %}<i class="fa-solid fa-circle-check greentick"></i> Fees Paid{% else %}<i class="fa-solid fa-circle-check redtick"></i> Fees not Paid{% endif %} for semester 7</p>
+        <p>{% if sem8 %}<i class="fa-solid fa-circle-check greentick"></i> Fees Paid{% else %}<i class="fa-solid fa-circle-check redtick"></i> Fees not Paid{% endif %} for semester 8</p>
         
-    </p>
+    </div>
 </body>
 </html>

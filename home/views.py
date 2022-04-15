@@ -86,8 +86,10 @@ def payfees(request):
                 context[f"sem{sem}"] = "Paid"
             else:
                 context[sem] = ""
-
+    
     return render(request, 'payfees.html', context)
+
+    
 
 def status(request):
     return HttpResponse("You're at the home status.")
@@ -112,10 +114,27 @@ def loginuser(request):
         else:
             print("user is not logged in")
             return HttpResponse("Invalid login details supplied.")
-            login(request, user)
         
 
-    return render(request, 'login.html')
+    if request.user.is_anonymous:
+        context = {"message": "You are not logged in"}
+        context["entry"] = ""
+        context["nav1"] = "Student Login"
+        context["link1"] = "login"
+        context["nav2"] = "Sign Up"
+        context["link2"] = "signup"
+        
+
+    else:
+        context = {"message": f"You are logged in as {request.user.username}"}
+        context["entry"] = request.user.username
+        context["nav1"] = "Pay Fees"
+        context["link1"] = "payfees"
+        context["nav2"] = f"Logout ({request.user.username})"
+        context["link2"] = "logout"
+    
+    context["flip"] = "true"
+    return render(request, 'signup.html', context)
 
 def logoutuser(request):
     logout(request)
@@ -147,6 +166,24 @@ def signup(request):
         return render(request, 'signup.html', context)
 
 
-    return render(request, 'signup.html')
+    if request.user.is_anonymous:
+        context = {"message": "You are not logged in"}
+        context["entry"] = ""
+        context["nav1"] = "Student Login"
+        context["link1"] = "login"
+        context["nav2"] = "Sign Up"
+        context["link2"] = "signup"
+        
+
+    else:
+        context = {"message": f"You are logged in as {request.user.username}"}
+        context["entry"] = request.user.username
+        context["nav1"] = "Pay Fees"
+        context["link1"] = "payfees"
+        context["nav2"] = f"Logout ({request.user.username})"
+        context["link2"] = "logout"
+    
+    context["flip"] = ""
+    return render(request, 'signup.html', context)
 
 

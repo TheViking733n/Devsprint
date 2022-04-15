@@ -76,26 +76,26 @@ WSGI_APPLICATION = 'school.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'daomo614s4unir',
-        'USER': 'iedofszgmgsxkx',
-        'PASSWORD': '5a9f5f3517c538ef61aef9b23f4c65fa18a22a11f016b73cb111d4e560a533f9',
-        'HOST': 'ec2-18-214-134-226.compute-1.amazonaws.com',
-        'PORT':  5432
-        
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'daomo614s4unir',
+#         'USER': 'iedofszgmgsxkx',
+#         'PASSWORD': '5a9f5f3517c538ef61aef9b23f4c65fa18a22a11f016b73cb111d4e560a533f9',
+#         'HOST': 'ec2-18-214-134-226.compute-1.amazonaws.com',
+#         'PORT':  5432
+
+#     }
+# }
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 
 
 

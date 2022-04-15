@@ -178,11 +178,11 @@ p h2{
         {% csrf_token %}
         <div  id="students-form" style="font-size:40px">Fee Payment Portal</div>
         <label  for="fname" class="first-name">Name:</label>
-        <input type="text" id="fname" name="fname" value="" placeholder="Enter your name"><br>
+        <input type="text" id="fname" name="fname" value="" placeholder="Enter your name" required><br>
         <!-- <label for="lname" class="first-name" >Last name:</label>
         <input type="text" id="lname" name="lname" value=""  placeholder="Enter yout last name"><br><br> -->
-        <label  for="entry" class="rollno">Entry No:</label>
-        <input type="text" id="entry" name="entry" value="{{entry}}" placeholder="e.g. 2021csb1087"><br>
+        <label  for="entry" class="rollno" required>Entry No:</label>
+        <input type="text" id="entry" name="entry" value="{{entry}}" placeholder="e.g. 2021csb1087" required><br>
         <p><h2  style="color:aliceblue; margin:20px; ">Choose your SEMESTER:</h2></p>
         <div class="radio" style="color:aqua">
         
