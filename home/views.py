@@ -7,10 +7,21 @@ from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 def index(request):
+
     if request.user.is_anonymous:
         context = {"message": "You are not logged in"}
+        context["nav1"] = "Student Login"
+        context["link1"] = "login"
+        context["nav2"] = "Sign Up"
+        context["link2"] = "signup"
+        
+
     else:
         context = {"message": f"You are logged in as {request.user.username}"}
+        context["nav1"] = "Pay Fees"
+        context["link1"] = "payfees"
+        context["nav2"] = f"Logout ({request.user.username})"
+        context["link2"] = "logout"
     return render(request, 'index.html', context)
 
 def auth(request):
