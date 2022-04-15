@@ -28,9 +28,11 @@ python manage.py runserver
 Open [Localhost]("localhost:8000") in the browser to view the website
 
 
-#### Default admin credentials (Only for development purposes)
-Username: admin-iit-ropar
-Password: password123
+
+### Default admin credentials (Only for development purposes)
+##### Username: admin-iit-ropar
+##### Password: password123
+
 
 
 
