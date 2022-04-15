@@ -10,7 +10,7 @@ def index(request):
     if request.user.is_anonymous:
         context = {"message": "You are not logged in"}
     else:
-        context = {"message": "You are logged in"}
+        context = {"message": f"You are logged in as {request.user.username}"}
     return render(request, 'index.html', context)
 
 def auth(request):
@@ -34,8 +34,11 @@ def payfees(request):
         feespayments.save()
 
 
-
-    return render(request, 'payfees.html')
+    if request.user.is_anonymous:
+        context = {"entry": ""}
+    else:
+        context = {"entry": request.user.username}
+    return render(request, 'payfees.html', context)
 
 def status(request):
     return HttpResponse("You're at the home status.")
@@ -46,7 +49,10 @@ def loginuser(request):
         password = request.POST.get('psw')
         user = User.objects.filter(username=username, password=password)
         print(username, password)
-
+        try:
+            user = User.objects.get(username=username)
+        except:
+            return HttpResponse("This entry no. doesn't exists")
         if user is not None:
             print("user is logged in")
             user = authenticate(username=username, password=password)
@@ -76,10 +82,18 @@ def signup(request):
         # username = form.cleaned_data.get('username')
         # raw_password = form.cleaned_data.get('password1')
         print(username, raw_password)
-        user = User.objects.create_user(username=username, password=raw_password)
-        user = authenticate(username=username, password=raw_password)
-        login(request, user)
-        return redirect('/payfees')
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            user = User.objects.create_user(username=username, password=raw_password)
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/payfees')
+        
+        print("this entry no. already taken")
+        return HttpResponse("This entry no. already taken")
+
 
     return render(request, 'signup.html')
 
