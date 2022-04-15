@@ -1,0 +1,91 @@
+
+*{  background-color:#21130d;}
+/* *{  background-color:#21130d;} */
+    input[type=text], select {
+    width: 80%;
+    padding: 12px 40px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input:focus {
+    background-color: lightblue;
+  }
+  input[type=submit] {
+    margin:auto;
+    font-size: 40px;
+    padding: 2px 24px;
+    color:#DD66F2;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(126, 49, 49);
+    border-radius:24px;
+    box-sizing: border-box;
+    outline:2px solid rgb(236, 111, 111);
+    outline-offset: 2px ;
+    
+  }
+
+  
+  input[type=select] {
+    margin:50px;
+    font-size: 40px;
+    padding: 2px 43px;
+    color:white;
+    margin: 8px 0;
+    display: inline-block;
+    
+    border-radius:24px;
+    box-sizing: border-box;
+  
+    
+    
+  }
+  .radio{
+      margin:2px 82px;
+      color:rgb(50, 119, 119);
+  }
+  input[type=submit]:hover{
+      outline-offset: 3px;
+      color:blueviolet;
+      display:inline-block;
+      margin:auto;
+      margin-top:32px;
+  }
+
+  #students-form{
+    font-family: 'Whisper', cursive;
+    font-size:60px;
+   text-align:center;
+    
+  }
+  span{
+      color:rgb(232, 210, 133);
+  }
+  .first-name{
+      font-size:32px;
+      padding:12px 20px;
+      color:rgb(82, 157, 157)
+  }
+
+  .last-name{
+    font-size:32px;
+    padding:12px 20px;
+}
+.rollno{
+    font-size:32px;
+    margin-bottom:0;
+    padding:12px 20px;
+    color:rgb(82, 157, 157)
+}
+.submit{
+    margin:auto;
+}
+
+p h2{
+    color:rgb(170, 25, 25);
+}
+
+

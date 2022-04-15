@@ -1,2 +1,2 @@
-# Devsprint
- Full Stack website for IIT Ropar Fees Payment system
+# school
+ C:\Users\acer\Desktop\Softcom Devsprint 2022\Devsprint

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            background-color:rgb(220, 183, 116);
+            background-size:cover;
+            color:rgb(92, 30, 30);
+            
+        }
+        a{
+            text-decoration: none;
+            cursor:pointer;
+        }
+        
+        .nav-list{
+            margin:12px;
+        }
+        
+        .logo{
+            margin:22px;
+        }
+        .nav-list li a{
+            font-size:22px;
+        }
+        
+        
+        .nav{
+            display:flex;
+            justify-content:space-between;
+        }
+        
+        .nav-list li  {
+            display:inline-block;
+            padding:28px;
+            
+        }
+        .nav-list li  a{
+            color:rgb(206, 213, 220);
+        }
+        
+        .nav-list li a:hover{
+        color:#c68265;
+        
+        }
+        .students-form{
+            font-family: 'Roboto', sans-serif;
+            font-size:large;
+        }
+
+*{  background-color:#21130d;}
+/* *{  background-color:#21130d;} */
+    input[type=text], select {
+    width: 80%;
+    padding: 12px 40px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input:focus {
+    background-color: lightblue;
+  }
+  input[type=submit] {
+    margin:auto;
+    font-size: 40px;
+    padding: 2px 24px;
+    color:#DD66F2;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(126, 49, 49);
+    border-radius:24px;
+    box-sizing: border-box;
+    outline:2px solid rgb(236, 111, 111);
+    outline-offset: 2px ;
+    
+  }
+
+  
+  input[type=select] {
+    margin:50px;
+    font-size: 40px;
+    padding: 2px 43px;
+    color:white;
+    margin: 8px 0;
+    display: inline-block;
+    
+    border-radius:24px;
+    box-sizing: border-box;
+  
+    
+    
+  }
+  .radio{
+      margin:2px 82px;
+      color:rgb(50, 119, 119);
+  }
+  input[type=submit]:hover{
+      outline-offset: 3px;
+      color:blueviolet;
+      display:inline-block;
+      margin:auto;
+      margin-top:32px;
+  }
+
+  #students-form{
+    font-family: 'Whisper', cursive;
+    font-size:60px;
+   text-align:center;
+    
+  }
+  span{
+      color:rgb(232, 210, 133);
+  }
+  .first-name{
+      font-size:32px;
+      padding:12px 20px;
+      color:rgb(82, 157, 157)
+  }
+
+  .last-name{
+    font-size:32px;
+    padding:12px 20px;
+}
+.rollno{
+    font-size:32px;
+    margin-bottom:0;
+    padding:12px 20px;
+    color:rgb(82, 157, 157)
+}
+.submit{
+    margin:auto;
+}
+
+p h2{
+    color:rgb(170, 25, 25);
+}
+
+
+
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style-student.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,400&family=Roboto:wght@300;400;700&family=Whisper&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,400&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/783752fd1c.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/254c15941e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>A robust Fee Managemnt System</title>
+</head>
+<body>
+    <nav class="nav">
+       <div font-size="120px" class="logo">  </i><i class="fa-solid fa-book-open-reader" style="font-size:48px; color:white;"></i></div>
+       <ul class=" nav-list">
+           <li><a href="/">Home</a></li>           
+           <li><a href="#">Services</a></li>
+           <li><a href="#">Contact us</a></li>
+           <li><a href="/admin/">Admin Login</a></li>
+           <li><a href="/payfees/">Student Login</a></li>
+       </ul>
+    </nav>
+
+    <div class="welcome" style="font-size:47px; text-align:center"> <span>WEL</span>come to</div>
+    <form method="post" action="/payfees/">
+        {% csrf_token %}
+        <div  id="students-form" style="font-size:40px">Fee Payment Portal</div>
+        <label  for="fname" class="first-name">Name:</label>
+        <input type="text" id="fname" name="fname" value="" placeholder="Enter your name"><br>
+        <!-- <label for="lname" class="first-name" >Last name:</label>
+        <input type="text" id="lname" name="lname" value=""  placeholder="Enter yout last name"><br><br> -->
+        <label  for="entry" class="rollno">Entry No:</label>
+        <input type="text" id="entry" name="entry" value="" placeholder="e.g. 2021csb1087"><br>
+        <p><h2  style="color:aliceblue; margin:20px; ">Choose your SEMESTER:</h2></p>
+        <div class="radio" style="color:aqua">
+        
+            <label for="semester"></label>
+
+            <select style="color:aliceblue " name="semester" id="semester" onclick="myfunc()">
+                <option style="color:aliceblue"  value="">Choose your SEMESTER</option>
+              <option style="color:aliceblue" value="1">1st SEMESTER</option>
+              <option style="color:aliceblue"value="2">2nd SEMESTER</option>
+              <option style="color:aliceblue"value="3">3rd SEMESTER</option>
+              <option style="color:aliceblue"value="4">4th SEMESTER</option>
+              
+              <option style="color:aliceblue"value="5">5th SEMESTER</option>
+              <option style="color:aliceblue"value="6">6th SEMESTER</option>
+              <option style="color:aliceblue"value="7">7th SEMESTER</option>
+              <option style="color:aliceblue"value="8">8th SEMESTER</option>
+           
+            </select>
+           
+            <br>
+            <label  style="color:aliceblue; font-size:30px; margin:20px 0" for="Amount">Amount to Be Paid:</label>
+            <input style="color:aliceblue" type="text"  name="Amount" id="amount" readonly="readonly">
+        <input type="submit" class="submit" style="margin:60px 46%" value="Submit" onclick="alert('Fees Payment Successful')">
+    </form>
+
+
+
+    <script >
+        
+console.log("hii")
+function myfunc(){
+let dropdown=document.getElementById("semester");
+
+var e=dropdown.value;
+
+var amount=100000+e*5000;
+document.getElementById("amount").value=amount;
+}
+
+    </script>
+    
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body> -->
+
+</body>
+</html>

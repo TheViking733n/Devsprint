@@ -1,0 +1,47 @@
+*{
+    padding:0;
+    margin:0;
+    background-color:rgb(220, 183, 116);
+    background-size:cover;
+    color:rgb(92, 30, 30);
+    
+}
+a{
+    text-decoration: none;
+    cursor:pointer;
+}
+
+.nav-list{
+    margin:12px;
+}
+
+.logo{
+    margin:22px;
+}
+.nav-list li a{
+    font-size:22px;
+}
+
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-list li  {
+    display:inline-block;
+    padding:28px;
+    
+}
+.nav-list li  a{
+    color:rgb(206, 213, 220);
+}
+
+.nav-list li a:hover{
+color:#c68265;
+
+}
+.students-form{
+    font-family: 'Roboto', sans-serif;
+    font-size:large;
+}
