@@ -592,7 +592,7 @@ footer a {
 				<a href="https://in.linkedin.com/" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your account</span>
-      <label for="uname"><b>Username</b></label>
+      <label for="uname"><b>Entry No.</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required>
   
       <label for="psw"><b>Password</b></label>
@@ -604,13 +604,13 @@ footer a {
 	<div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
+				<h1>Welcome Back Student!</h1>
+				<p>Login with your Entry No. to pay your fees</p>
 				<button class="ghost" id="signIn">Sign In</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
+				<h1>Hello, Student!</h1>
+				<p>Enter your Entry No. and get started with the new online fees payment system</p>
 				<button class="ghost" id="signUp">Sign Up</button>
 			</div>
 		</div>
@@ -639,39 +639,3 @@ signInButton.addEventListener('click', () => {
 </body>
 </html>
 
-
-
-{% comment %} <body>
-
-  {% if error %}<script>alert("{{error}}");</script>{% endif %}
-  
-
-  <form action="/signup/" method="post">
-        {% csrf_token %}
-        <div class="imgcontainer">
-          <img src="{% static 'images/avatar.png' %}" alt="Avatar" class="avatar">
-        </div>
-      
-        <div class="container">
-          <label for="uname"><b>Entry No.</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-      
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-            
-          <label for="psw"><b>Confirm Password</b></label>
-          <input type="password" placeholder="Enter Password Again" name="psw" required>
-      
-          <button type="submit">Sign Up</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
-        </div>
-      
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="window.location.href='/'" id = "cancelbtn" class="cancelbtn">Cancel</button>
-          <span class="psw">Already have an account <a href="/login">Sign In</a></span>
-        </div>
-      </form>
-</body>
-</html> {% endcomment %}

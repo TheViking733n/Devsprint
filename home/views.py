@@ -95,6 +95,7 @@ def status(request):
     return HttpResponse("You're at the home status.")
 
 def loginuser(request):
+    context = {}
     if request.method == 'POST':
         username = request.POST.get('uname')
         password = request.POST.get('psw')
@@ -102,22 +103,24 @@ def loginuser(request):
         try:
             user = User.objects.get(username=username)
         except:
-            return HttpResponse("This entry no. doesn't exists")
-
-        user = User.objects.filter(username=username, password=password)
-        user = authenticate(username=username, password=password)
-        if user:
-            print("user is logged in")
-            login(request, user)
-            return redirect('/dashboard')
-        
+            # return HttpResponse("This entry no. doesn't exists")
+            context["error"] = "This entry no. does not exists"
         else:
-            print("user is not logged in")
-            return HttpResponse("Invalid login details supplied.")
+            user = User.objects.filter(username=username, password=password)
+            user = authenticate(username=username, password=password)
+            if user:
+                print("user is logged in")
+                login(request, user)
+                return redirect('/dashboard')
+            
+            else:
+                print("user is not logged in")
+                # return HttpResponse("Invalid login details supplied.")
+                context["error"] = "Invalid login details supplied."
         
 
     if request.user.is_anonymous:
-        context = {"message": "You are not logged in"}
+        context["message"] = "You are not logged in"
         context["entry"] = ""
         context["nav1"] = "Student Login"
         context["link1"] = "login"
@@ -126,7 +129,7 @@ def loginuser(request):
         
 
     else:
-        context = {"message": f"You are logged in as {request.user.username}"}
+        context["message"] = f"You are logged in as {request.user.username}"
         context["entry"] = request.user.username
         context["nav1"] = "Pay Fees"
         context["link1"] = "payfees"
