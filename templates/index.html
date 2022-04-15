@@ -5,72 +5,168 @@
     <meta charset="UTF-8">
     <style>
 
-*{
-    padding:0;
-    margin:0;
-   
-    background-color:rgb(220, 183, 116);
-    color:rgb(92, 30, 30);
-    margin-top:0px;
-    margin-bottom:0px;
-    
-}
-a{
-    text-decoration: none;
-    cursor:pointer;
-}
-
-.nav-list{
-    margin:12px;
-}
-
-.logo{
-    margin:22px;
-}
-.nav-list li a{
-    font-size:22px;
-}
-
-
-.nav{
-    justify-content:space-between;
-}
-
-.nav-list li  {
-    display:inline-block;
-    padding:28px;
-    
-}
-.nav-list li  a{
-    color:rgb(206, 213, 220);
-}
-
-.nav-list li a:hover{
-color:#c68265;
-
-}
-.students-form{
-    font-family: 'Roboto', sans-serif;
-    font-size:large;
-}
-
-        *{
-            
-            background-image: url('https://www.linkpicture.com/q/avatar_11.png');
-            background-repeat:no-repeat;
-            background-position-x: center;
-            background-position-y: 150px;
-            background-blend-mode:multiply;
-           background-attachment: fixed;
-            z-index:8;
-          
-           
+        * {
+            box-sizing: border-box;
         }
-        nav ul li a{
-            border :2px solid rgb(84, 110, 51);
-            background-color: rgb(125, 134, 37);
-            padding:4px 10px;
-            border-radius:10px;
+        
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            display: flex;
+            position: relative;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+        }
+        
+        .brand-title {
+            width=15%;
+            margin: 0;
+        }
+        
+        .navbar-links {
+            height: 100%;
+        }
+        
+        .navbar-links ul {
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar-links li {
+            list-style: none;
+        }
+        
+        .navbar-links li a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            padding: 1rem;
+        }
+        
+        .navbar-links li:hover {
+            background-color: #555;
+        }
+        
+        .toggle-button {
+            position: absolute;
+            top: .75rem;
+            right: 1rem;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+        }
+        
+        .toggle-button .bar {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+        }
+        
+        @media (max-width: 800px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        
+            .toggle-button {
+                display: flex;
+            }
+        
+            .navbar-links {
+                display: none;
+                width: 100%;
+            }
+        
+            .navbar-links ul {
+                width: 100%;
+                flex-direction: column;
+            }
+        
+            .navbar-links ul li {
+                text-align: center;
+            }
+        
+            .navbar-links ul li a {
+                padding: .5rem 1rem;
+            }
+        
+            .navbar-links.active {
+                display: flex;
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /* Background Styles Only */
+        
+        @import url('https://fonts.googleapis.com/css?family=Raleway');
+        
+        * {
+            font-family: Raleway;
+        }
+        
+        html {
+            background-color: #DFDFDF;
+        }
+        
+        .side-links {
+          position: absolute;
+          bottom: 15px;
+          right: 15px;
+        }
+        
+        .side-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          margin-bottom: 10px;
+          color: white;
+          width: 180px;
+          padding: 10px 0;
+          border-radius: 10px;
+        }
+        
+        .side-link-youtube {
+          background-color: red;
+        }
+        
+        .side-link-twitter {
+          background-color: #1DA1F2;
+        }
+        
+        .side-link-github {
+          background-color: #6e5494;
+        }
+        
+        .side-link-text {
+          margin-left: 10px;
+          font-size: 18px;
+        }
+        
+        .side-link-icon {
+          color: white;
+          font-size: 30px;
         }
         h1{
             text-align: center;
@@ -98,31 +194,44 @@ color:#c68265;
     <title>A robust Fee Managemnt System</title>
 </head>
 <body>
-    <nav class="nav">
-        <div font-size="120px" class="logo"> <img src="{% static 'images/image.png' %}" style="color:white"  width="110px"alt="logo"></div>
-        <ul class=" nav-list">
+    <nav class="navbar">
+        <div class="brand-title"> <img width ="15%" src="https://timesofindia.indiatimes.com/thumb/msid-71721983,imgsize-362900,width-400,resizemode-4/71721983.jpg" /> </div>
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          <ul>
             <li><a href="/">Home</a></li>           
             <li><a href="admin/">Admin Login</a></li>
             <li><a href="login/">Student Login</a></li>
             <li><a href="signup/">Sign Up</a></li>
             <li><a href="logout/">Logout</a></li>
-        </ul>
-     </nav>
+          </ul>
+        </div>
+      </nav>
+      
 
     <h1 style="margin-bottom: 0rem;">Welcome To The Best Fee Managemnt System </h1>
     <h3>we offer best Education for a Better world </h3>
     {{message}}
+
+    <script>
+        const toggleButton = document.getElementsByClassName('toggle-button')[0]
+const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+toggleButton.addEventListener('click', () => {
+  navbarLinks.classList.toggle('active')
+})
+    
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-
-
-
 
 
 
