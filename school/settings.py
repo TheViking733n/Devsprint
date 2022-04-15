@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'school.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgresql-parallel-69129',
+        'NAME': 'daomo614s4unir',
         'USER': 'iedofszgmgsxkx',
         'PASSWORD': '5a9f5f3517c538ef61aef9b23f4c65fa18a22a11f016b73cb111d4e560a533f9',
         'HOST': 'ec2-18-214-134-226.compute-1.amazonaws.com',
