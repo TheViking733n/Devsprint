@@ -80,14 +80,14 @@
 </head>
 
 <body>
-
-    <form action="action_page.php" method="post">
+    <form action="/login/" method="post">
+        {% csrf_token %}
         <div class="imgcontainer">
           <img src="{% static 'images/avatar.png' %}" alt="Avatar" class="avatar">
         </div>
       
         <div class="container">
-          <label for="uname"><b>Username</b></label>
+          <label for="uname"><b>Entry no.</b></label>
           <input type="text" placeholder="Enter Username" name="uname" required>
       
           <label for="psw"><b>Password</b></label>
