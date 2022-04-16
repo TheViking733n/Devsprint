@@ -12,7 +12,7 @@
 
 # Dependencies
 - [django](https://pypi.org/project/Django/)
-
+- [python](https://www.python.org/)
 
 ## Installation
 ```sh
